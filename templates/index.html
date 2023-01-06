@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h3 class="card-title">MTCC</h3>
+                    </div>
+                    <!--					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                    <ul class="list-group list-group-flush scroll">
+                        {% for datum in data[0]: %}
+                        <div class="card-body">
+                        <li class="list-group-item">{{datum['title']}}</li>
+                        <li class="list-group-item"><a href="{{datum['link']}}">Link to Event</a></li>
+                        <li class="list-group-item">{{datum['dates']}}</li>
+                        <li class="list-group-item">{{datum['type']}}</li>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h3 class="card-title">MTCC</h3>
+                    </div>
+                    <!--					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                    <ul class="list-group list-group-flush scroll">
+                        {% for datum in data[1]: %}
+                        <div class="card-body">
+                        <li class="list-group-item">{{datum['title']}}</li>
+                        <li class="list-group-item"><a href="{{datum['link']}}">Link to Event</a></li>
+                        <li class="list-group-item">{{datum['dates']}}</li>
+                        <li class="list-group-item">{{datum['type']}}</li>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </ul>
+                    <!--					<div class="card-footer">-->
+                    <!--						Card Footer-->
+                    <!--					</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
