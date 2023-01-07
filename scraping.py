@@ -3,6 +3,7 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 from pprint import pprint
 import pandas as pd
 from time import sleep
@@ -62,14 +63,25 @@ class Scraper:
         self.browser.get(NPS_URL)
 
         months = self.browser.find_elements(By.XPATH, '//div[@class="accordion__section"]/div')
-        events = months[0].find_elements(By.XPATH, './/p')
+        events = months[1].find_elements(By.XPATH, './/p')
 
         formatted = pd.DataFrame({
-            'title': event.get_attribute('textContent').split(':')[1].strip(),
-            'link': "",
-            'dates': event.get_attribute('textContent').split(':')[0].strip(),
+            'title': event.get_attribute('textContent').split(':', 1)[1].strip(),
+            'link': ' ',
+            'dates': event.get_attribute('textContent').split(':', 1)[0].strip(),
             'type': 'Public Event'
-                                 }for event in events)
+                                 } for event in events)
+        links = []
+        for event in events:
+            try:
+                temp = event.find_element(By.XPATH, './/a')
+            except NoSuchElementException:
+                temp = ' '
+            else:
+                temp = temp.get_attribute('href')
+            finally:
+                links.append(temp)
+        formatted['link'] = links
         formatted.to_csv('data/nps.csv', index=False)
 
     def read_csv(self, file):
@@ -86,5 +98,6 @@ class Scraper:
 # data = read_csv('sba')
 # print(data)
 
-scraper = Scraper()
-scraper.get_nps()
+# Scraper Test
+# scraper = Scraper()
+# scraper.get_nps()

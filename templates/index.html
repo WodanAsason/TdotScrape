@@ -23,7 +23,9 @@
                                 <div class="card-body event-card collapse d-xl-block" id="collapse-{{name}}">
                                 <li class="list-group-item">
                                     <span class="event-info event-title">{{event['title']}}</span><br>
+                                    {% if event['link'] != ' ' %}
                                     <span class="event-info event-link"><a href="{{event['link']}}">Link to Event</a></span><br>
+                                    {% endif %}
                                     <span class="event-info event-date">{{event['dates']}}</span><br>
                                     <span class="event-info event-type">{{event['type']}}</span>
                                 </li>
