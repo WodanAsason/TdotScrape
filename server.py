@@ -15,5 +15,4 @@ def home():
     data = {'MTCC': scraper.read_csv('mtcc').to_dict(orient='records'),
             'SBA': scraper.read_csv('sba').to_dict(orient='records'),
             'NPS': scraper.read_csv('nps').to_dict(orient='records')}
-
     return render_template('index.html', data=data)
