@@ -1,4 +1,165 @@
-.scroll {
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+*/
+
+colors-placeholder {
+    color: #000000;
+    color: #150050;
+    color: #3F0071;
+    color: #FB2576;
+}
+
+body {
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #000000;
+    color: cyan;
+}
+
+.scroll-card {
     max-height: 50vh;
     overflow-y: auto;
 }
+
+.scroll-body {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
+.Title {
+    font-size: 5em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    padding: 4rem;
+}
+
+.card-toggler {
+    background: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    /*display: none;*/
+}
+
+.hamburg {
+    background-color: #000;
+    color: #FB2576;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.card {
+    border-color: cyan;
+    border-width: medium;
+    margin-top: 2rem;
+    background-color: rgba(21, 21, 21, 0.8);
+}
+
+.card-header{
+    margin-bottom: 1rem;
+}
+
+.venue-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.card-body {
+    /*background-color: #151515;*/
+}
+
+.list-group-item {
+    margin-top: 0;
+    background-color: rgba(3, 0, 23, 0);
+    color: cyan;
+}
+
+.event-info {
+    line-height: 2;
+}
+
+.event-title {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #FB2576;
+}
+
+.event-date, .event-type {
+}
+
+a:link {
+    color: cyan;
+}
+
+a:visited {
+    color: #347275;
+}
+
+.event-card {
+    background-color: rgba(3, 0, 23, 0.6);
+    border: solid cyan thin;
+    margin: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 0.1rem;
+}
+
+/*::-webkit-scrollbar-track {*/
+/*    box-shadow: inset 0 0 6px rgb(60, 255, 255, 0.3);*/
+/*  }*/
+
+::-webkit-scrollbar-thumb {
+    background-color: cyan;
+    outline: 0.1rem solid cyan;
+}
+
+  #frontpage{
+    padding: 50px;
+  }
+
+  @keyframes animatedBG {
+      /*0% {*/
+      /*    background-position: 0vw bottom, 300vw bottom, 600vw bottom, 900vw bottom;*/
+      /*}*/
+      /*100% {*/
+      /*    background-position: -1200vw bottom, -900vw bottom, -600vw bottom, -200vw bottom;*/
+      /*}*/
+      0% {
+          background-position: 100vw, 100vw, 101vw, 0vw;
+      }
+      33% {
+          background-position: 100vw, 100vw, 0vw, -100vw;
+      }
+      66% {
+          background-position: 100vw, 0vw, -100vw, -100vw;
+      }
+      100% {
+          background-position: 0vw, -100vw, -100vw, -100vw;
+      }
+  }
+
+  #animate-bg {
+      width: 100%;
+      height: 100vh;
+      background-image: url('/static/images/alexandre-st-louis-cm1gRsbjRlE-unsplash.jpg'), url('/static/images/ilya-cher-UHFTNwaQg9o-unsplash.jpg'), url('/static/images/lianhao-qu-k6CF5Qf1_o8-unsplash.jpg'), url('/static/images/zack-brame--O-06aw14y8-unsplash.jpg');
+      background-size: 200%;
+      background-position: 100% 100%, 101% 100%, 101% 100%, 0% 100%;
+      background-repeat: no-repeat;
+      animation: animatedBG 40s linear infinite;
+      z-index: -1;
+      position: absolute;
+  }
+
+  @media (max-width: 1100px) {
+      #animate-bg {
+          background-size: cover;
+      }
+
+      /*.card-toggler {*/
+      /*    display: inline-block;*/
+      /*}*/
+  }

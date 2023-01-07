@@ -1,27 +1,40 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        {% block head %}
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-        {% block styles %}
-            <!-- Bootstrap CSS -->
-            {{ bootstrap.load_css() }}
-        <link rel="stylesheet" href="/static/css/styles.css">
-        {% endblock %}
+    {% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu&display=swap"
+          rel="stylesheet">
+    <!-- FontAwesome -->
+<!--    <script src="https://kit.fontawesome.com/75165f36e7.js" crossorigin="anonymous"></script>-->
+    <script src="https://kit.fontawesome.com/faace61d41.js" crossorigin="anonymous"></script>
+    <!-- Custom Styles -->
+    <link href="/static/css/styles.css" rel="stylesheet">
+    {% endblock %}
 
-        <title>TdotScrape</title>
-        {% endblock %}
-    </head>
-    <body>
-        <!-- Your page content -->
+    <title>TdotScrape</title>
+    {% endblock %}
+</head>
+<body>
+        <div id="animate-bg"></div>
+
+    <!-- Your page content -->
+    <div id="frontpage" class="scroll-body scroll">
         {% block content %}{% endblock %}
+    </div>
 
-        {% block scripts %}
-            <!-- Optional JavaScript -->
-            {{ bootstrap.load_js() }}
-        {% endblock %}
-    </body>
+    {% block scripts %}
+        <!-- Optional JavaScript -->
+        {{ bootstrap.load_js() }}
+    {% endblock %}
+</body>
 </html>

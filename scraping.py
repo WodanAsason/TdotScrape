@@ -12,6 +12,7 @@ pd.set_option('display.max_columns', None)
 
 MTCC_URL = "https://www.mtccc.com/events/"
 SBA_URL = "https://www.scotiabankarena.com/calendar"
+NPS_URL = "https://www.toronto.ca/services-payments/venues-facilities-bookings/booking-city-facilities/city-squares/nathan-phillips-square/events-happening-on-nathan-phillips-square/"
 
 
 class Scraper:
@@ -57,6 +58,20 @@ class Scraper:
                                  }for event in events)
         formatted.to_csv('data/sba.csv')
 
+    def get_nps(self):
+        self.browser.get(NPS_URL)
+
+        months = self.browser.find_elements(By.XPATH, '//div[@class="accordion__section"]/div')
+        events = months[0].find_elements(By.XPATH, './/p')
+
+        formatted = pd.DataFrame({
+            'title': event.get_attribute('textContent').split(':')[1].strip(),
+            'link': "",
+            'dates': event.get_attribute('textContent').split(':')[0].strip(),
+            'type': 'Public Event'
+                                 }for event in events)
+        formatted.to_csv('data/nps.csv', index=False)
+
     def read_csv(self, file):
         return pd.read_csv(f'data/{file}.csv')
 
@@ -70,3 +85,6 @@ class Scraper:
 # get_sba()
 # data = read_csv('sba')
 # print(data)
+
+scraper = Scraper()
+scraper.get_nps()

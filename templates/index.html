@@ -1,52 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
+<div>
+    <h1 class="Title">TdotScrape</h1>
+</div>
 <div class="container">
     <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-header">
-                        <h3 class="card-title">MTCC</h3>
-                    </div>
-                    <!--					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-                    <ul class="list-group list-group-flush scroll">
-                        {% for datum in data[0]: %}
-                        <div class="card-body">
-                        <li class="list-group-item">{{datum['title']}}</li>
-                        <li class="list-group-item"><a href="{{datum['link']}}">Link to Event</a></li>
-                        <li class="list-group-item">{{datum['dates']}}</li>
-                        <li class="list-group-item">{{datum['type']}}</li>
+        {% for (name, venue) in data.items(): %}
+            <div class="col-xl-4 col-lg-6 d-flex flex-column">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3 class="card-title venue-title">{{name}}
+
+                            <button class="btn card-toggler d-xl-none" data-bs-target="#collapse-{{name}}" data-bs-toggle="collapse" type="button">
+                                <i class="fa-solid fa-bars hamburg"></i>
+                            </button>
+                                </h3>
+
                         </div>
-                        <br>
-                        {% endfor %}
-                    </ul>
+                        <ul class="list-group list-group-flush scroll-card">
+                            {% for event in venue: %}
+                                <div class="card-body event-card collapse d-xl-block" id="collapse-{{name}}">
+                                <li class="list-group-item">
+                                    <span class="event-info event-title">{{event['title']}}</span><br>
+                                    <span class="event-info event-link"><a href="{{event['link']}}">Link to Event</a></span><br>
+                                    <span class="event-info event-date">{{event['dates']}}</span><br>
+                                    <span class="event-info event-type">{{event['type']}}</span>
+                                </li>
+                                </div>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-header">
-                        <h3 class="card-title">MTCC</h3>
-                    </div>
-                    <!--					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-                    <ul class="list-group list-group-flush scroll">
-                        {% for datum in data[1]: %}
-                        <div class="card-body">
-                        <li class="list-group-item">{{datum['title']}}</li>
-                        <li class="list-group-item"><a href="{{datum['link']}}">Link to Event</a></li>
-                        <li class="list-group-item">{{datum['dates']}}</li>
-                        <li class="list-group-item">{{datum['type']}}</li>
-                        </div>
-                        <br>
-                        {% endfor %}
-                    </ul>
-                    <!--					<div class="card-footer">-->
-                    <!--						Card Footer-->
-                    <!--					</div>-->
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 </div>
