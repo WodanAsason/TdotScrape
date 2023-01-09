@@ -16,7 +16,7 @@ NPS_URL = "https://www.toronto.ca/services-payments/venues-facilities-bookings/b
 
 class Scraper:
     # def __init__(self):
-    #     self.browser = self.get_browser()
+    #     self.browser = None
     #
     # def get_browser(self):
     #     # Selenium Setup
@@ -28,9 +28,15 @@ class Scraper:
     #     # chrome_options.add_experimental_option("detach", True)
     #     driver = webdriver.Chrome(options=chrome_options)
     #     driver.implicitly_wait(10)
-    #     return driver
+    #     self.browser = driver
+    #
+    #     def check_browser(self):
+    #         if self.browser == None:
+    #             self.get_browser()
+    #         pass
     #
     # def get_mtcc(self):
+    #     self.check_browser()
     #     self.browser.get(MTCC_URL)
     #
     #     sleep(2)
@@ -46,6 +52,7 @@ class Scraper:
     #     formatted.to_csv('data/mtcc.csv', index=False)
     #
     # def get_sba(self):
+    #     self.check_browser()
     #     self.browser.get(SBA_URL)
     #
     #     events = self.browser.find_elements(By.XPATH, '//div[contains(@class, "hasEvent")]')
@@ -58,6 +65,7 @@ class Scraper:
     #     formatted.to_csv('data/sba.csv')
     #
     # def get_nps(self):
+    #     self.check_browser()
     #     self.browser.get(NPS_URL)
     #
     #     months = self.browser.find_elements(By.XPATH, '//div[@class="accordion__section"]/div')
